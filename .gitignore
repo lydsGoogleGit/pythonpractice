@@ -1,0 +1,6 @@
+venv
+site-packages
+.idea
+bin
+22-pong/main/pyvenv.cfg
+.DS_Store
