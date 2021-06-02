@@ -1,25 +1,14 @@
 from turtle import Turtle, Screen
 import random
-from bubbles import the_people
-
+from players import Player, THE_PEOPLE
 
 screen = Screen()
 screen.setup(1500, 1500)
 screen.bgpic("images/SKY-SPORTS.gif")
 line = Turtle()
 
-players = []
-pictures = []
-
-while len(players) < 6:
-    player = Turtle()
-    picture = f"Images/team_members_photos/{random.choice(the_people)}"
-    while picture in pictures:
-        picture = f"Images/team_members_photos/{random.choice(the_people)}"
-    pictures.append(picture)
-    screen.addshape(picture)
-    player.shape(picture)
-    players.append(player)
+for image in THE_PEOPLE:
+    screen.addshape(f"Images/team_members_photos/{image}")
 
 
 screen.listen()
@@ -36,13 +25,22 @@ for i in range (40):
     line.penup()
     line.forward(10)
 
+players = []
+
+while len(players) < 6:
+    player = Player()
+    players.append((player.person, player))
+
+
 # starting positions
 x = -600
 y = -400
+
 for i in players:
-    i.speed("fastest")
-    i.penup()
-    i.goto(x, y)
+    i[1].penup()
+    i[1].speed("fastest")
+    i[1].shape(f"Images/team_members_photos/{i[0]}")
+    i[1].goto(x, y)
     y += 150
 
 
@@ -51,10 +49,11 @@ def gameplay():
     random.shuffle(players)
     while m:
         for i in players:
-            if i.xcor() >= 600:
+            if i[1].xcor() >= 600:
+                print(i)
                 m = False
-            elif i.xcor() < 600:
-                i.forward(random.randint(0, 25))
+            elif i[1].xcor() < 600:
+                i[1].forward(random.randint(0, 25))
 
 
 gameplay()
