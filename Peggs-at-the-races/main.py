@@ -48,18 +48,18 @@ loss.penup()
 loss.color("green")
 loss.hideturtle()
 
-# # finish line
-# line.penup()
-# line.goto(600, -400)
-# line.left(90)
-# for i in range (20):
-#     line.width(20)
-#     line.color("white")
-#     line.speed("fastest")
-#     line.pendown()
-#     line.forward(20)
-#     line.penup()
-#     line.forward(20)
+# finish line
+line.penup()
+line.goto(600, -400)
+line.left(90)
+for i in range (20):
+    line.width(20)
+    line.color("white")
+    line.speed("fastest")
+    line.pendown()
+    line.forward(20)
+    line.penup()
+    line.forward(20)
 
 # winner_guess = screen.textinput("Make your guess", f"Who will win the race?")
 
