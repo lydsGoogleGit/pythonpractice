@@ -6,7 +6,7 @@ from forfeits import forfeits
 
 screen = Screen()
 screen.setup(1500, 1500)
-screen.bgpic("images/race-background.gif")
+screen.bgpic("images/peggs_at_races.gif")
 line = Turtle()
 winner = Turtle()
 
@@ -77,21 +77,21 @@ def gameplay():
                 loser_xcor = val_list.index(min(val_list))
                 loser = key_list[loser_xcor]
                 print(loser)
-                winner.goto(-300, 100)
+                winner.goto(-300, 0)
                 winner.write(
-                    f"The winner is: {i[0]}!",
-                    move=False, align="center", font=("Arial", 50, "bold"))
+                    f"{i[0]} is the winner!",
+                    move=False, align="center", font=("Courier New", 50, "bold"))
                 print(i)
-                loss.goto(-300, 0)
+                loss.goto(-300, -100)
                 loss.color("red")
                 loss.write(
-                    f"The loser is: {loser}",
-                    move=False, align="center", font=("Arial", 50, "bold"))
-                loss.goto(-400,-300)
-                loss.color("white")
+                    f"{loser} is the loser!",
+                    move=False, align="center", font=("Courier New", 50, "bold"))
+                loss.goto(-300,200)
+                loss.color("white", "blue")
                 loss.write(
                     f"Forfeit:\n{random.choice(forfeits)}",
-                    move=False, font=("Arial", 50, "bold"))
+                    move=False, align="center", font=("Courier New", 50, "bold"))
                 m = False
                 break
             elif i[1].xcor() < 600:
