@@ -14,15 +14,14 @@ for image in THE_PEOPLE:
     screen.addshape(f"Images/{image}.gif")
 
 screen.listen()
+player_names = random.sample(THE_PEOPLE, 6)
 players = []
-is_set =[]
 
-while len(set(players)) < 6:
-    player = Player()
-    player.hideturtle()
-    if player.person not in is_set:
-        is_set.append(player.person)
-        players.append((player.person, player))
+for player in player_names:
+    player_object = Player()
+    player_object.hideturtle()
+    players.append((player, player_object))
+
 
 # starting positions
 x = -600
@@ -71,11 +70,7 @@ def gameplay():
         for i in players:
             if i[1].xcor() >= 600:
                 finishing_positions = {m[0]: m[1].xcor() for m in players}
-                print(finishing_positions)
-                key_list = list(finishing_positions.keys())
-                val_list = list(finishing_positions.values())
-                loser_xcor = val_list.index(min(val_list))
-                loser = key_list[loser_xcor]
+                loser = min(finishing_positions, key=finishing_positions.get)
                 print(loser)
                 winner.goto(-300, 0)
                 winner.write(
