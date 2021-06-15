@@ -1,9 +1,17 @@
-def findJudge(n, nodes):
-    base_nodes_to_test = set([i[1] for i in nodes])  # create discrete list of 'trusted' people
+def find_judge(n, nodes):
+    if not nodes:
+        if n == 1:
+            return n
+        else:
+            return -1
+    base_nodes_to_test = set([i[1] for i in nodes])
     for i in nodes:
         if i[0] in base_nodes_to_test:
             base_nodes_to_test.remove(i[0])
-    base_node_dict = {base_node: [] for base_node in base_nodes_to_test}
+        if len(base_nodes_to_test) == 0:
+            return -1
+            break
+    base_node_dict = {base_node: [base_node] for base_node in base_nodes_to_test}
     for key in base_node_dict:
         for truster in nodes:
             if truster[1] == key:
